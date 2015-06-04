@@ -7,4 +7,15 @@ namespace :phoenix do
       end
     end
   end
+
+  desc "Run npm install on the server"
+  namespace :node do
+    task :dependencies do
+      on roles(:all) do |host|
+        within(current_path) do
+          execute(:npm, "install")
+        end
+      end
+    end
+  end
 end
